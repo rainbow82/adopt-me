@@ -16,17 +16,23 @@ class Carousel extends React.Component {
     return { photos };
   }
 
+  handleIndexClick = (event) =>{
+    this.setState({
+      active: +event.target.dataset.index
+    })
+  }
+
   render() {
     const { photos, active } = this.state;
 
     return (
       <div className="carousel">
         <img src={photos[active]} alt="animal" />
-        <div className="carousel-small">
+        <div className="carousel-smaller">
           {photos.map((photo, index) => (
             <img
               key={photo}
-              onClick={this.handleIndecClick}
+              onClick={this.handleIndexClick}
               data-index={index}
               src={photo}
               className={index === active ? 'active' : ''}
